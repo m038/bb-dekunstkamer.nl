@@ -1,0 +1,124 @@
+# This is the config file for the Simple Forms extension.
+
+stylesheet: assets/simpleforms.css
+template: assets/simpleforms_form.twig
+mail_template: assets/simpleforms_mail.twig
+message_ok: "Uw bericht is succesvol verzonden. B&B De kunstkamer zal zo spoedig als mogelijk contact met u openemen. <br><br>Ter herinnering, deze aanvraag is <b>geen</b> definitieve reservering!"
+message_error: "Er is een fout in het formulier. Controleer alle velden en probeer het opnieuw."
+message_technical: "Uw bericht kon niet verzonden worden. Probeer nogmaals. Lukt het niet? Neem dan handmatig contact op via het op deze pagina vermeldde e-mailadres."
+button_text: "Verzenden"
+# Optional. Used only, when you have a file field.
+# mime_types_message: "Not allowed file type. Allowed file types are:"
+
+# ReCaptcha Config - Set these options to enable ReCaptcha spam protection.
+# Generate your keys at https://www.google.com/recaptcha/admin/create
+recaptcha_enabled: false
+recaptcha_public_key: ''
+recaptcha_private_key: ''
+recaptcha_error_message: "The CAPTCHA wasn't entered correctly. Please try again."
+recaptcha_theme: clean
+
+# Enable CSRF protection for forms. You should leave this set to 'true', unless
+# you know what you're doing.
+csrf: true
+
+# Default fallback sender email
+# this is required because Swiftmailer will reject the message without one
+# please make this a sensible existing email address
+from_email: mailer@gorinskat.nl
+from_name: Sitemailer
+
+# global cc email address
+# set this value to an email address that will receive a copy of every email from simpleforms
+# recipient_cc_email: m.gorinskat@gmail.com
+# recipient_cc_name: "Mischa Gorinskat"
+
+# global bcc email address
+# set this value to an email address that will receive a blind copy of every email from simpleforms
+recipient_bcc_email: m.gorinskat@gmail.com
+
+# global testmode
+# for development all email will be sent to this address
+# all other recipient and cc addresses will be ignored
+# remove or set 'testmode' to false for a production site
+testmode : true
+testmode_recipient: m.gorinskat@gmail.com
+
+# from_email and from_name can be set for picky SMTP servers
+
+# A simple contact form. Use as {{ simpleform('contact') }} in your templates.
+reserveren:
+  template: booking_form.twig
+  mail_template: booking_mail.twig
+  recipient_email: info@bb-dekunstkamer.nl
+  recipient_name: "B&B De Kunstkamer"
+  fields:
+    name:
+      prefix: "<fieldset><legend>Algemene informatie</legend>"
+      type: text
+      required: true
+      label: Naam
+      placeholder: Naam
+      class: span12
+    email:
+      type: email
+      label: "E-mail adres"
+      required: true
+      placeholder: "E-mail: naam@example.com"
+      use_as: from_email
+      use_with: name
+      class: span12
+    telephone:
+      type: text
+      label: "Telefoon"
+      placeholder: "0123-456789"
+      class: span12
+    address:
+      type: text
+      label: "Straat en huisnummer"
+      placeholder: "Adres: Dorpstraat 1"
+      class: span12
+    postcode:
+      type: text
+      label: "Postcode"
+      placeholder: "Postcode: 1234 AA"
+      class: span12
+    place:
+      type: text
+      label: "Plaats"
+      placeholder: "Plaats"
+      class: span12
+    country:
+      type: text
+      label: "Land"
+      placeholder: "Land"
+      value: "Nederland"
+      class: span12
+      postfix: "</fieldset>"
+    data:
+      type: text
+      label: "Data"
+      placeholder: "Data"
+      class: span12
+      prefix: "<fieldset><legend>Reserveringsinformatie</legend>"
+    number_persons:
+      type: text
+      label: "Aantal personen"
+      class: span12
+      placeholder: "Aantal personen"
+    rooms:
+      type: choice
+      label: "Kamers"
+      choices:
+        blauwe_rode_kamer: "Blauwe-Rode kamer"
+        turquoise_kamer: "Turquoise kamer"
+      expanded: true
+      multiple: true
+      postfix: "</fieldset>"
+    message:
+      type: textarea
+      label: "Opmerking"
+      placeholder: "Uw bericht..."
+      class: span12
+      prefix: "<fieldset><legend>Overige</legend>"
+      postfix: "</fieldset>"

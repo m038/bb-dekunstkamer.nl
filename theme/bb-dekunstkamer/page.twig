@@ -1,0 +1,92 @@
+{% extends "_boilerplate.twig" %}
+
+{% block content %}
+<!-- Main columns -->
+            <div class="row-fluid">
+                <div class="span6 container">
+                    {% if record.body_1 != '' %}
+                        <div class="row-fluid">
+                            <div class="span12 bg-w txt-pad1">
+                                {{ record.body_1 }}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if record.image_2 %}
+                        <div class="row-fluid">
+                            <div class="span12 bg-w txt-pad1">
+                                <img class="large" src="{{ image(record.image_2) }}" width="100%" />
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if record.body_3 != '' %}
+                        <div class="row-fluid">
+                            <div class="span12 bg-w txt-pad1">
+                                {{ record.body_3 }}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if record.image_4 %}
+                        <div class="row-fluid">
+                            <div class="span12 bg-w txt-pad1">
+                                <img class="large" src="{{ image(record.image_4) }}" width="100%" />
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if record.body_5 != '' %}
+                        <div class="row-fluid">
+                            <div class="span12 bg-w txt-pad1">
+                                {{ record.body_5 }}
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="span6 container">
+                    {% if record.image_1 %}
+                        <div class="row-fluid">
+                            <div class="span12 bg-w txt-pad1">
+                                <img class="large" src="{{ image(record.image_1) }}" width="100%" />
+                            </div>
+                        </div>
+                    {% endif %}
+
+                     {% if record.body_2 != '' %}
+                        <div class="row-fluid">
+                            <div class="span12 bg-w txt-pad1">
+                                {{ record.body_2 }}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if record.image_3 %}
+                        <div class="row-fluid">
+                            <div class="span12 bg-w txt-pad1">
+                                <img class="large" src="{{ image(record.image_3) }}" width="100%" />
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if record.body_4 != '' %}
+                        <div class="row-fluid">
+                            <div class="span12 bg-w txt-pad1">
+                                {{ record.body_4 }}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if record.image_5 %}
+                        <div class="row-fluid">
+                            <div class="span12 bg-w txt-pad1">
+                                <img class="large" src="{{ image(record.image_5) }}" width="100%" />
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+<!-- End Main Content and Sidebar -->
+{% endblock %}

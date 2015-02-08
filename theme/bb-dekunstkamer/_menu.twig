@@ -1,0 +1,18 @@
+{% macro display_menu_item(item, loop) %}
+{% spaceless %}
+<li>
+    <a href="{{ item.link }}" {% if item.title is defined %}title="{{ item.title|escape }}"{% endif %}
+       class="{% if item.class is defined %}{{item.class}}{% endif %}{% if item|current %} selected{% endif %}">
+        {{item.label}}
+    </a>
+</li>
+{% endspaceless %}
+{% endmacro %}
+
+<ul id="main-menu" class="menu main-menu nav nav-pills">
+{% for item in menu %}
+    {% if item.label is defined %}
+        {{ _self.display_menu_item(item, loop) }}
+    {% endif %}
+{% endfor %}
+</ul>

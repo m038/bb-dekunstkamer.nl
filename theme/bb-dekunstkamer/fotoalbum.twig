@@ -1,0 +1,70 @@
+{% extends "_boilerplate.twig" %}
+
+{% block extracss %}
+    <link rel="stylesheet" href="{{ paths.theme }}css/blueimp-gallery.min.css">
+{% endblock %}
+
+{% block extrajs %}
+    <script src="{{ paths.theme }}javascripts/vendor/blueimp-gallery.min.js"></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="row-fluid">
+    <div class="span12 container">
+
+        <div class="row-fluid">
+            <div class="span3 bg-w txt-pad1 album-list">
+
+                <h3>{{ __("Fotoalbums") }}</h3>
+
+                {% setcontent albums = 'fotoalbums' where { showonalbumpage: 'ja' } %}
+
+                {% if albums is not empty %}
+
+                    {% for album in albums %}
+                        <a href="{{ album.link }}">
+                            <figure>
+                                <img class="medium" src="{{ thumbnail(album.imagelist.0, 256, 256) }}" alt="{{ album.imagelist.0.title }}" style="width:100%;" />
+                                <figcaption><p>{{ album.title }}</p></figcaption>
+                            </figure>
+                        </a>
+                    {%  endfor %}
+                    </ul>
+                {% endif %}
+
+            </div>
+
+            <div class="span9 bg-w txt-pad1 image-list">
+                {% if record %}
+                    <h3>Fotoalbum &quot;{{ record.title }}&quot;</h3>
+
+                    {% for image in record.imagelist %}
+                        <a href="{{ image(image) }}">
+                            <img class="small" src="{{ thumbnail(image, 256, 256) }}" alt="{{ image.title }}" />
+                        </a>
+                    {% endfor %}
+                {% else %}
+                    <p>
+                        Klik op een album uit de lijst links om het te bekijken.
+                    </p>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extrabody %}
+    <div id="blueimp-gallery" class="blueimp-gallery  blueimp-gallery-controls">
+        <div class="slides"></div>
+        <h3 class="title"></h3>
+        <a class="prev">‹</a>
+        <a class="next">›</a>
+        <a class="close">×</a>
+        <a class="play-pause"></a>
+        <ol class="indicator"></ol>
+    </div>
+{% endblock %}

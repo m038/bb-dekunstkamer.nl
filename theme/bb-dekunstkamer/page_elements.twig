@@ -1,0 +1,38 @@
+{% extends "_boilerplate.twig" %}
+
+{% block content %}
+
+<div class="row-fluid">
+    <div class="span6 container">
+
+        <div class="row-fluid">
+            <div class="span12 bg-w txt-pad1">
+
+                {% if record.content_type == 'Links' %}
+
+                    <h3>{{ __("Links") }}</h3>
+
+                    {{ dump(record) }}
+
+                    {% set relatedrecords = record.related('links') %}
+
+                        {{ dump(relatedrecords) }}
+
+                    {% if relatedrecords is not empty %}
+                        <ul>
+                            {% for related in relatedrecords %}
+                                <li><a href="{{ related.url }}" target="_blank">{{ related.title }}</a></li>
+                            {%  endfor %}
+                        </ul>
+                    {% endif %}
+
+                {% elseif record.content_type == 'Tekst blokken' %}
+
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

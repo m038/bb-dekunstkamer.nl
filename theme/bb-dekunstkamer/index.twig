@@ -1,0 +1,68 @@
+{% extends "_boilerplate.twig" %}
+
+{% block content %}
+<!-- Main columns -->
+    <div class="row-fluid">
+        <div class="span6 container">
+
+            {% if record is defined %}
+
+                {% set home = record %}
+
+                <div class="row-fluid">
+                    <div class="span12 bg-w txt-pad1">
+                        <h3>{{ home.title }}</h3>
+                        {{ home.body }}
+                    </div>
+                </div>
+
+            {% endif %}
+
+            <div class="row-fluid">
+                <div class="span12 bg-w txt-pad1">
+                    <h3>
+                        Onze kamers
+                    </h3>
+
+                    {% setcontent kamers = "kamers" allowpaging %}
+                    {% if kamers %}
+                        <ul class="rooms">
+                        {% for kamer in kamers %}
+                            <li>
+                                {% if kamer.imagelist.0 %}
+                                    <img src="{{ thumbnail(kamer.imagelist.0, 256, 256) }}" width="100" height="100" />
+                                {% endif %}
+                                <h4>{{ kamer.title }}</h4>
+                                <p class="description">
+                                    {{ kamer.teaser }}
+                                    <br />
+                                </p>
+                                <p class="link">
+                                    <a href="{{ kamer.link }}">
+                                        {{ __("Meer over deze kamer >") }}
+                                    </a>
+                                </p>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+
+         {% if record is defined %}
+
+            {% set home = record %}
+
+            <div class="span6 container">
+                <div class="row-fluid">
+                    <div class="span12 bg-w txt-pad1">
+                        <!-- Slide show image -->
+                        <img class="large" src="{{ image(home.image) }}" width="100%" />
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

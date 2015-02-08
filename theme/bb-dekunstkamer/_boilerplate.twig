@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="{{ htmllang() }}"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="{{ htmllang() }}"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="{{ htmllang() }}"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="{{ htmllang() }}"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>B&amp;B De Kunstkamer</title>
+        <meta name="description" content="">
+        {# <meta name="viewport" content="width=device-width"> #}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="stylesheet" href="{{ paths.theme }}css/bootstrap.min.css">
+        <link rel="stylesheet/less" type="text/css" href="{{ paths.theme }}css/main.less">
+        {% block extracss %}{% endblock %}
+
+        <script src="{{ paths.theme }}javascripts/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div class="site-container">
+
+            <header id="site-header" class="row-fluid">
+                <div class="span12 bg-w txt-pad1 clearfix">
+                    <h1 class="brand pull-left">{% block pagetitle %}B&amp;B De Kunstkamer{% endblock %}</h1>
+
+                    {{ menu('main', '_menu.twig') }}
+                </div>
+            </header>
+
+                {% block content %} {% endblock %}
+
+            <footer class="row-fluid">
+                <div class="span12 block bg-w txt-pad1">
+                    <p>&copy; {{ "now"|date("Y") }} {% block footertitle %}B&amp;B De Kunstkamer{% endblock %}</p>
+                </div>
+            </footer>
+
+        </div>
+
+        {% block extrabody %}{% endblock %}
+
+        <script src="{{ paths.theme }}javascripts/vendor/jquery-1.8.3.min.js"></script>
+        <script src="{{ paths.theme }}javascripts/vendor/less-1.3.3.min.js"></script>
+        <script src="{{ paths.theme }}javascripts/vendor/bootstrap.min.js"></script>
+        {% block extrajs %}{% endblock %}
+        <script src="{{ paths.theme }}javascripts/main.js"></script>
+        <script src="{{ paths.theme }}javascripts/ga.js"></script>
+
+    </body>
+</html>

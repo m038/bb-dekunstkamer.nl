@@ -1,0 +1,42 @@
+<p>Hallo,</p>
+
+<p>Er is een nieuw bericht via het contact formulier op de site.</p>
+
+<hr>
+
+{% for label, value in form %}
+
+    {% if label == 'name' %}
+        {% set email_label = 'Naam' %}
+    {% elseif label == 'email' %}
+        {% set email_label = 'E-mail' %}
+    {% elseif label == 'telephone' %}
+        {% set email_label = 'Telefoon' %}
+    {% elseif label == 'address' %}
+        {% set email_label = 'Adres' %}
+    {% elseif label == 'postcode' %}
+        {% set email_label = 'Postcode' %}
+    {% elseif label == 'place' %}
+        {% set email_label = 'Plaats' %}
+    {% elseif label == 'country' %}
+        {% set email_label = 'Land' %}
+    {% elseif label == 'data' %}
+        {% set email_label = 'Data' %}
+    {% elseif label == 'number_persons' %}
+        {% set email_label = 'Aantal personen' %}
+    {% elseif label == 'rooms' %}
+        {% set email_label = 'Kamers' %}
+    {% elseif label == 'message' %}
+        {% set email_label = 'Bericht' %}
+    {% endif %}
+
+    {% if label == 'blauwe_rode_kamer' %}
+        {% set email_label = 'Blauw-Rode Kamer' %}
+    {% elseif label == 'turquoise_kamer' %}
+        {% set email_label = 'Turquoise kamer' %}
+    {% else %}
+        {% set email_value = value %}
+    {% endif %}
+
+    <p>{{ email_label }}: {{ email_value }}</p>
+{% endfor %}

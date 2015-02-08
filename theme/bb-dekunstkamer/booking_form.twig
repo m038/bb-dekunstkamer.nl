@@ -1,0 +1,34 @@
+{% form_theme form 'booking_form_fields.twig' %}
+
+{% if error %}
+    <p class="status-warning">
+        <span class="label label-warning">
+            Fout!
+        </span>
+        {{ error|raw }}
+    </p>
+{% endif %}
+{% if message %}
+    <p class="status-success">
+        <span class="label label-success">
+            Succes!
+        </span>
+        {{ message|raw }}
+    </p>
+{% endif %}
+{% if not sent %}
+<p class="small">
+    Probeert u alsublieft zo volledig mogelijk het formulier in te vullen. Wij zullen dan zo spoedig mogelijk contact met u opnemen.
+    <br><br>
+    Let op! Het verzenden van de aanvraag betekent niet automatisch een reservering.
+</p>
+<form id="{{ formname }}_form" action="#" method="post" class="form-horizontal simpleform-{{ formname }}" enctype="multipart/form-data">
+    {{ form_widget(form) }}
+
+    <div class="control-group">
+        <div class="controls">
+            <input type="submit" name="submit" value="{{ button_text }}" class="btn" />
+        </div>
+    </div>
+</form>
+{% endif %}

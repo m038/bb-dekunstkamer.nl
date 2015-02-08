@@ -1,0 +1,213 @@
+# This file defines the contenttypes on the website. See the documentation for
+# details: http://docs.bolt.cm/content#defining-contenttypes
+
+# Pages can be used for the more 'static' pages on your site. Things like
+# 'about us', 'contact' or a 'disclaimer'. This content-type has a 'templateselect'
+# field, which allows you to override the record_template setting for an
+# individual page.
+# The taxonomy for this contenttype is defined as 'chapters', which is a so-called
+# "grouping taxonomy". This way you can easily group sets of pages that logically
+# belong together. If your site has a 'services' section, in which you'd like to
+# list the different types of services a company provides, you can group these
+# together.
+
+homepage:
+    name: Homepaginas
+    singular_name: Homepagina
+    fields:
+        title:
+            type: text
+            class: large
+            group: content
+        slug:
+            type: slug
+            uses: title
+        image:
+            type: image
+        body:
+            type: html
+            height: 300px
+    default_status: draft
+
+# Room content type
+room:
+    name: Kamers
+    singular_name: Kamer
+    fields:
+        title:
+            type: text
+            label: Titel
+            class: large
+            group: content
+            required: true
+        slug:
+            type: slug
+            label: Link titel
+            uses: title
+        teaser:
+            type: text
+            height: 75px
+            required: true
+            label: "Korte tekst op homepage"
+        body:
+            type: html
+            height: 300px
+            required: true
+            label: "Detail tekst"
+        imagelist:
+            type: imagelist
+            group: media
+            extensions: [ jpg, png ]
+            label: "Afbeeldingen lijst"
+        prices:
+            type: html
+            height: 300px
+            required: true
+            group: content
+            label: "Prijzen"
+        options:
+            type: html
+            height: 300px
+            required: true
+            group: content
+            label: "Opties"
+        information:
+            type: html
+            height: 300px
+            required: true
+            group: content
+            label: "Algemene informatie"
+    record_template: room.twig
+    default_status: draft
+    sort: -datepublish
+    recordsperpage: 10
+
+pages:
+    name: Paginas
+    singular_name: Pagina
+    fields:
+        title:
+            type: text
+            class: large
+            group: content
+            label: Titel
+        slug:
+            type: slug
+            uses: title
+            label: "Link titel"
+        body_1:
+            type: html
+            height: 300px
+            label: "Tekst links (positie 1)"
+        body_2:
+            type: html
+            height: 300px
+            label: "Tekst rechts (positie 2)"
+        body_3:
+            type: html
+            height: 300px
+            label: "Tekst links (positie 3)"
+        body_4:
+            type: html
+            height: 300px
+            label: "Tekst rechts (positie 4)"
+        body_5:
+            type: html
+            height: 300px
+            label: "Tekst links (positie 5)"
+        image_1:
+            type: image
+            group: media
+            label: "Afbeelding rechts (positie 1)"
+        image_2:
+            type: image
+            group: media
+            label: "Afbeelding links (positie 2)"
+        image_3:
+            type: image
+            group: media
+            label: "Afbeelding rechts (positie 3)"
+        image_4:
+            type: image
+            group: media
+            label: "Afbeelding links (positie 4)"
+        image_5:
+            type: image
+            group: media
+            label: "Afbeelding rechts (positie 5)"
+    default_status: draft
+    record_template: page.twig
+    sort: -datepublish
+    recordsperpage: 10
+
+pictures:
+    name: Fotoalbums
+    singular_name: Fotoalbum
+    fields:
+        title:
+            type: text
+            class: large
+            group: content
+            label: Titel
+        slug:
+            type: slug
+            uses: title
+        imagelist:
+            type: imagelist
+            label: Afbeeldingenlijst
+        showonalbumpage:
+            type: select
+            values: [ ja, nee ]
+            label: 'Toon op fotoalbum pagina'
+    default_status: draft
+    listing_template: fotoalbum.twig
+    record_template: fotoalbum.twig
+    sort: -datepublish
+    recordsperpage: 10
+
+links:
+    name: "Links"
+    singular_name: "Link"
+    fields:
+        title:
+            type: text
+            label: Naam
+            required: true
+        url:
+            type: text
+            pattern: url
+            label: URL;
+            required: true
+        links_type:
+            type: select
+            values:
+                default: "Algemeen"
+                activities: "Activiteiten"
+                restaurants: "Restauraties"
+                other: "Other"
+            label: "Link groep"
+            required: true
+    default_status: draft
+    viewless: false
+
+# possible field types:
+# text - varchar(256) - input type text.
+# integer - integer - Input field for integer numbers.
+# float - double - Input field for floating numbers, stored as 'Double'.
+# geolocation - text (65kb) - Input field for geolocation. Enter an address, and the location is geocoded to latitude/longitude coordinates
+# imagelist - text (65kb) - Input type for imagelists. Add multiple images with a description. Useful for image sliders, galleries, etcetera.
+# image - varchar(256) - image select/upload widget, stored as filename.
+# file - varchar(256) - file select/upload widget, stored as filename.
+# filelist - text (65kb) - Input type for a list of files. Including a description.
+# video - varchar(256) - Video embed widget, stored as filename.
+# html - text (65kb) - wysiwyg element.
+# textarea - varchar(32768) - Simple, plain < textarea > field.
+# markdown - varchar(32768) - Simple, plain < textarea > field, which is parsed as Markdown text.
+# datetime - datetime - date and time selector widget.
+# date - datetime - date selector widget.
+# select - varchar(256) - select with predefined values
+# templateselect - varchar(256) - select with template filenames
+# checkbox - integer - checkbox-field which is 1 (checked) or 0 (unchecked)
+
+
+# number (deprecated) - input type decimal(18,9), useful for storing number that need to be sortable

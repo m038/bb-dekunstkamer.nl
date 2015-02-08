@@ -1,0 +1,51 @@
+{% extends "_boilerplate.twig" %}
+
+{% block content %}
+
+<div class="row-fluid">
+    <div class="span6 container">
+
+        <div class="row-fluid">
+            <div class="span12 bg-w txt-pad1">
+
+                <h3>{{ __("Links") }}</h3>
+
+                {% setcontent records = 'links' %}
+
+                {% if records is not empty %}
+                    {% set last_type = '' %}
+                    {% for record in records|order('links_type', 'title') %}
+                        {% if last_type != record.links_type %}
+                            {% if last_type != '' %}
+                                </ul>
+                            {% endif %}
+                            {% set last_type = record.links_type %}
+                            <h4>{{ record.links_type }}</h4>
+                            <ul>
+                        {% endif %}
+                        <li><a href="{{ record.url }}" target="_blank" class="external">{{ record.title }}</a></li>
+                    {%  endfor %}
+                    </ul>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+
+    <div class="span6 container">
+        {% setcontent album = '/fotoalbum/fotos-op-de-link-pagina' %}
+
+        {% if album %}
+
+            {% set picture = random(album.imagelist) %}
+
+            <div class="row-fluid">
+                <div class="span12 bg-w txt-pad1">
+                    <img class="large" src="{{ image(picture) }}" alt="{{ picture.title }}" width="100%" />
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

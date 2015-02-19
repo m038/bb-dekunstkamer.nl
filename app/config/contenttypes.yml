@@ -184,7 +184,7 @@ links:
                 default: "Algemeen"
                 activities: "Activiteiten"
                 restaurants: "Restauraties"
-                other: "Other"
+                other: "Overige"
             label: "Link groep"
             required: true
     default_status: draft

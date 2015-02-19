@@ -18,7 +18,7 @@
 
                 <h3>{{ __("Fotoalbums") }}</h3>
 
-                {% setcontent albums = 'fotoalbums' where { showonalbumpage: 'ja' } %}
+                {% setcontent albums = 'fotoalbums' where { showonalbumpage: 'ja' } orderby 'volgorde' %}
 
                 {% if albums is not empty %}
 
@@ -46,7 +46,7 @@
                     {% endfor %}
                 {% else %}
                     <p>
-                        Klik op een album uit de lijst links om het te bekijken.
+                        {{ __('Klik op een album uit de lijst links om het te bekijken.') }}
                     </p>
                 {% endif %}
             </div>

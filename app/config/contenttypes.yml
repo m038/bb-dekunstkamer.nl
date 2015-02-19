@@ -159,10 +159,14 @@ pictures:
             type: select
             values: [ ja, nee ]
             label: 'Toon op fotoalbum pagina'
+        volgorde:
+            type: integer
+            label: 'Volgorde'
+            info: 'Vul hier een cijfer in om de locatie van het fotoalbum aan te geven'
     default_status: draft
     listing_template: fotoalbum.twig
     record_template: fotoalbum.twig
-    sort: -datepublish
+    sort: volgorde
     recordsperpage: 10
 
 links:

@@ -1,5 +1,9 @@
 {% extends "_boilerplate.twig" %}
 
+{% block extracss %}
+    <link rel="stylesheet" href="{{ paths.theme }}css/blueimp-gallery.min.css">
+{% endblock %}
+
 {% block extrajs %}
     <script src="{{ paths.theme }}javascripts/vendor/blueimp-gallery.min.js"></script>
 {% endblock %}
